@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\AbonneRepository;
+use App\Service\Redirect;
 use App\Service\View;
 
 class AbonneController
@@ -36,5 +37,12 @@ class AbonneController
             [
                 'abonne' => $abonne,
             ]);
+    }
+
+    public function deleteAbonneById($id): void
+    {
+        $abonne = $this->abonneRepository->findById($id);
+        $this->abonneRepository->remove($abonne);
+        Redirect::to('/abonnes');
     }
 }

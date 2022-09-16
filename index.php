@@ -33,6 +33,10 @@ try {
         echo (new AbonneController())->showAbonneById($id);
     });
 
+    $router->get('/abonne/del/:id', function ($id) {
+        echo (new AbonneController())->deleteAbonneById($id);
+    });
+
     $router->run();
 } catch (Exception $e) {
     die('Error: ' . $e);

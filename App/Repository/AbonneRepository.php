@@ -35,4 +35,12 @@ class AbonneRepository extends Database
         $abonne->setId($arr['id']);
         return $abonne;
     }
+
+    public function remove(Abonne $abonne)
+    {
+        $stmt = $this->db->prepare("DELETE FROM abonne WHERE id = :id");
+        $stmt->bindValue(':id', $abonne->getId());
+        $stmt->execute();
+        $stmt = null;
+    }
 }

@@ -10,6 +10,11 @@
 </head>
 
 <body>
+<nav class="navbar bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<?= URL_ROOT ?>">Home</a>
+    </div>
+</nav>
 <?= $content ?>
 </body>
 </html>

@@ -1,2 +1,3 @@
-<a href="">Voir tous les abonnés</a>
-<a href="">Voir tous les ouvrages</a>
+<a href="<?= URL_ROOT ?>/abonnes">Voir tous les abonnés</a>
+<br>
+<a href="<?= URL_ROOT ?>/ouvrages">Voir tous les ouvrages</a>

@@ -4,6 +4,7 @@ require_once 'Config/config.php';
 require_once 'Autoloader.php';
 
 use App\Autoloader;
+use App\Controller\HomeController;
 use App\Service\Router;
 use App\Controller\AbonneController;
 
@@ -24,6 +25,11 @@ try {
 
     $router = new Router($_GET['url']);
 
+    //HOME
+    $router->get('/', function () {
+        echo (new HomeController())->invoke();
+    });
+
     // ABONNE
     $router->get('/abonnes', function () {
         echo (new AbonneController())->listAllAbonnes();
@@ -35,6 +41,20 @@ try {
 
     $router->get('/abonne/del/:id', function ($id) {
         echo (new AbonneController())->deleteAbonneById($id);
+    });
+
+
+    // OUVRAGE
+    $router->get('/ouvrages', function () {
+        echo (new \App\Controller\OuvrageController())->listAllOuvrages();
+    });
+
+    $router->get('/ouvrage/:id', function ($id) {
+        echo (new \App\Controller\OuvrageController())->showOuvrageById($id);
+    });
+
+    $router->get('/ouvrage/del/:id', function ($id) {
+        echo (new \App\Controller\OuvrageController())->deleteOuvrageById($id);
     });
 
     $router->run();

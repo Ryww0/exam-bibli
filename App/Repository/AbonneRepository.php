@@ -43,4 +43,14 @@ class AbonneRepository extends Database
         $stmt->execute();
         $stmt = null;
     }
+
+    public function add(Abonne $abonne): Abonne
+    {
+        $stmt = $this->db->prepare("INSERT INTO abonne (nom, prenom) VALUES (:nom, :prenom)");
+        $stmt->bindValue(':nom', $abonne->getName());
+        $stmt->bindValue(':prenom', $abonne->getFirstname());
+        $stmt->execute();
+        $stmt = null;
+        return $this->findById($this->db->lastInsertId());
+    }
 }

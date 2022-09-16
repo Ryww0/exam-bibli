@@ -57,6 +57,16 @@ try {
         echo (new \App\Controller\OuvrageController())->deleteOuvrageById($id);
     });
 
+
+    // LOCATION
+    $router->get('/locations', function () {
+        echo (new \App\Controller\LocationController())->listAllLocation();
+    });
+
+    $router->get('/location/del/:id', function ($id) {
+        echo (new \App\Controller\LocationController())->deleteLocationById($id);
+    });
+
     $router->run();
 } catch (Exception $e) {
     die('Error: ' . $e);

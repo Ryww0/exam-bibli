@@ -9,9 +9,9 @@
         <tr>
             <td><strong><?= $ouvrage->getTitle() ?></strong></td>
             <td>Par : <?= $ouvrage->getAuthor() ?></td>
-            <td><a class="btn btn-primary" href="<?= URL_ROOT.'/abonne/'.$ouvrage->getId() ?>">voir</a></td>
-            <td><a class="btn btn-primary" href="<?= URL_ROOT.'/abonne/edit/'.$ouvrage->getId() ?>">editer</a></td>
-            <td><a class="btn btn-danger" href="<?= URL_ROOT.'/abonne/del/'.$ouvrage->getId() ?>">supprimer</a></td>
+            <td><a class="btn btn-primary" href="<?= URL_ROOT.'/ouvrage/'.$ouvrage->getId() ?>">voir</a></td>
+            <td><a class="btn btn-primary" href="<?= URL_ROOT.'/ouvrage/edit/'.$ouvrage->getId() ?>">editer</a></td>
+            <td><a class="btn btn-danger" href="<?= URL_ROOT.'/ouvrage/del/'.$ouvrage->getId() ?>">supprimer</a></td>
         </tr>
     <?php } ?>
     </tbody>

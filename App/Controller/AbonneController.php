@@ -26,4 +26,15 @@ class AbonneController
                     'abonnes' => $abonnes,
             ]);
     }
+
+    public function showAbonneById(int $id)
+    {
+        $abonne = $this->abonneRepository->findById($id);
+        return $this->render(
+            SITE_NAME.'- abonne',
+            'pages/abonne.php',
+            [
+                'abonne' => $abonne,
+            ]);
+    }
 }

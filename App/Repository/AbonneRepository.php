@@ -23,4 +23,16 @@ class AbonneRepository extends Database
         }
         return $abonnes;
     }
+
+    public function findById($params): Abonne
+    {
+        $stmt = $this->db->prepare("SELECT * FROM abonne WHERE id = :id");
+        $stmt->bindValue(':id', $params);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $arr = $stmt->fetch();
+        $abonne = new Abonne($arr['prenom'], $arr['nom']);
+        $abonne->setId($arr['id']);
+        return $abonne;
+    }
 }

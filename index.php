@@ -24,9 +24,13 @@ try {
 
     $router = new Router($_GET['url']);
 
-    //
+    // ABONNE
     $router->get('/abonnes', function () {
         echo (new AbonneController())->listAllAbonnes();
+    });
+
+    $router->get('/abonne/:id', function ($id) {
+        echo (new AbonneController())->showAbonneById($id);
     });
 
     $router->run();

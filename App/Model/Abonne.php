@@ -24,6 +24,11 @@ class Abonne
         return $this->prenom;
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
     public function setName($nom): Abonne
     {
         $this->nom = $nom;

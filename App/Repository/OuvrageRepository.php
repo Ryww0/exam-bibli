@@ -31,7 +31,7 @@ class OuvrageRepository extends Database
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $arr = $stmt->fetch();
-        $ouvrage = new Ouvrage($arr['prenom'], $arr['nom']);
+        $ouvrage = new Ouvrage($arr['titre'], $arr['auteur']);
         $ouvrage->setId($arr['id']);
         return $ouvrage;
     }

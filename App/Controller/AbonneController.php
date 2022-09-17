@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Form\FormAbonne;
+use App\Model\Abonne;
 use App\Repository\AbonneRepository;
+use App\Service\Input;
 use App\Service\Redirect;
 use App\Service\View;
+use App\Validator\Validation;
 
 class AbonneController
 {
@@ -44,5 +48,31 @@ class AbonneController
         $abonne = $this->abonneRepository->findById($id);
         $this->abonneRepository->remove($abonne);
         Redirect::to('/abonnes');
+    }
+
+    public function addAbonne()
+    {
+        if (Input::exists()) {
+            var_dump($_POST);
+            $val = new Validation;
+            $val->name('nom')->value(Input::get('nom'))->pattern('alpha')->required();
+            $val->name('prenom')->value(Input::get('prenom'))->pattern('alpha')->required();
+            if ($val->isSuccess()) {
+                $prenom = Input::get('prenom');
+                $nom = Input::get('nom');
+                $abonne = new Abonne($prenom, $nom);
+                $this->abonneRepository->add($abonne);
+                Redirect::to('abonnes');
+            } else {
+                Redirect::to('abonnes');
+            }
+        } else {
+            return $this->render(
+                SITE_NAME . ' - add abonnes: ',
+                'pages/create.php',
+                [
+                    'formAbonne' => FormAbonne::buildAddAbonne(),
+                ]);
+        }
     }
 }

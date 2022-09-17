@@ -43,6 +43,14 @@ try {
         echo (new AbonneController())->deleteAbonneById($id);
     });
 
+    $router->post('/abonne/add', function () {
+        echo (new AbonneController())->addAbonne();
+    });
+
+    $router->get('/abonnes/create', function () {
+        echo (new AbonneController())->addAbonne();
+    });
+
 
     // OUVRAGE
     $router->get('/ouvrages', function () {

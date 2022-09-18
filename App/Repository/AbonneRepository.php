@@ -53,4 +53,14 @@ class AbonneRepository extends Database
         $stmt = null;
         return $this->findById($this->db->lastInsertId());
     }
+
+    public function update(Abonne $abonne)
+    {
+        $stmt = $this->db->prepare("UPDATE abonne SET prenom = :prenom, nom = :nom WHERE id = :id");
+        $stmt->bindValue(':prenom', $abonne->getFirstname());
+        $stmt->bindValue(':nom', $abonne->getName());
+        $stmt->bindValue(':id', $abonne->getId());
+        $stmt->execute();
+        $stmt = null;
+    }
 }

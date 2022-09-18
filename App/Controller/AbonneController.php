@@ -25,10 +25,10 @@ class AbonneController
     {
         $abonnes = $this->abonneRepository->fetchAll();
         return $this->render(
-            SITE_NAME.'- abonnes',
+            SITE_NAME . '- abonnes',
             'pages/abonnes.php',
             [
-                    'abonnes' => $abonnes,
+                'abonnes' => $abonnes,
             ]);
     }
 
@@ -36,7 +36,7 @@ class AbonneController
     {
         $abonne = $this->abonneRepository->findById($id);
         return $this->render(
-            SITE_NAME.'- abonne',
+            SITE_NAME . '- abonne',
             'pages/abonne.php',
             [
                 'abonne' => $abonne,
@@ -73,6 +73,28 @@ class AbonneController
                 [
                     'formAbonne' => FormAbonne::buildAddAbonne(),
                 ]);
+        }
+    }
+
+    public function updateAbonneById($id)
+    {
+        if (Input::exists()) {
+            $val = new Validation;
+            $val->name('nom')->value(Input::get('nom'))->pattern('alpha')->required();
+            $val->name('prenom')->value(Input::get('prenom'))->pattern('alpha')->required();
+            if ($val->isSuccess()) {
+                $prenom = Input::get('prenom');
+                $nom = Input::get('nom');
+                var_dump($id);
+                var_dump($prenom);
+                var_dump($nom);
+                $abonne = new Abonne($prenom, $nom);
+                $abonne->setId($id);
+                $this->abonneRepository->update($abonne);
+                Redirect::to('abonnes');
+            } else {
+                Redirect::to('abonnes');
+            }
         }
     }
 }

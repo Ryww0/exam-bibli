@@ -51,6 +51,10 @@ try {
         echo (new AbonneController())->addAbonne();
     });
 
+    $router->post('/abonne/update/:id', function ($id) {
+        echo (new AbonneController())->updateAbonneById($id);
+    });
+
 
     // OUVRAGE
     $router->get('/ouvrages', function () {

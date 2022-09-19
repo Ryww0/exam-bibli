@@ -14,5 +14,4 @@ class HomeController
             SITE_NAME.'- home',
             'pages/homepage.php');
     }
-
 }

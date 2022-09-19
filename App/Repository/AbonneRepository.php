@@ -63,4 +63,13 @@ class AbonneRepository extends Database
         $stmt->execute();
         $stmt = null;
     }
+
+    public function count()
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(*) AS nbAbonnes FROM abonne");
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $num = $stmt->fetch();
+        return $num;
+    }
 }

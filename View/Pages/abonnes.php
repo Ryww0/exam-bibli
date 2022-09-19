@@ -2,7 +2,7 @@
     <table class="table row">
         <thead>
         <tr>
-            <th colspan="2">Liste des abonnés</th>
+            <th colspan="2">Liste des abonnés (<?= $count['nbAbonnes'] ?>)</th>
         </tr>
         </thead>
         <tbody>

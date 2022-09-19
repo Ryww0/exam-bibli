@@ -29,6 +29,7 @@ class AbonneController
             'pages/abonnes.php',
             [
                 'abonnes' => $abonnes,
+                'count' => $this->abonneRepository->count()
             ]);
     }
 

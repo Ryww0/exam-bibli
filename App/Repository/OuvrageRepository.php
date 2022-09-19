@@ -43,4 +43,14 @@ class OuvrageRepository extends Database
         $stmt->execute();
         $stmt = null;
     }
+
+    public function add(Ouvrage $ouvrage): Ouvrage
+    {
+        $stmt = $this->db->prepare("INSERT INTO ouvrage (titre, auteur) VALUES (:titre, :auteur)");
+        $stmt->bindValue(':titre', $ouvrage->getTitle());
+        $stmt->bindValue(':auteur', $ouvrage->getAuthor());
+        $stmt->execute();
+        $stmt = null;
+        return $this->findById($this->db->lastInsertId());
+    }
 }

@@ -69,6 +69,14 @@ try {
         echo (new \App\Controller\OuvrageController())->deleteOuvrageById($id);
     });
 
+    $router->post('/ouvrage/add', function () {
+        echo (new \App\Controller\OuvrageController())->addOuvrage();
+    });
+
+    $router->get('/ouvrages/create', function () {
+        echo (new \App\Controller\OuvrageController())->addOuvrage();
+    });
+
 
     // LOCATION
     $router->get('/locations', function () {

@@ -47,4 +47,14 @@ class LocationRepository extends Database
         $stmt->execute();
         $stmt = null;
     }
+
+    public function add(Location $location): Location
+    {
+        $stmt = $this->db->prepare("INSERT INTO association_abonne_ouvrage (id_abonne, id_ouvrage) VALUES (:idAbo, :idOuv)");
+        $stmt->bindValue(':idAbo', $location->getIdAbo());
+        $stmt->bindValue(':idOuv', $location->getIdOuv());
+        $stmt->execute();
+        $stmt = null;
+        return $this->findById($this->db->lastInsertId());
+    }
 }

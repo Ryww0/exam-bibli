@@ -53,4 +53,14 @@ class OuvrageRepository extends Database
         $stmt = null;
         return $this->findById($this->db->lastInsertId());
     }
+
+    public function update(Ouvrage $ouvrage)
+    {
+        $stmt = $this->db->prepare("UPDATE ouvrage SET titre = :titre, auteur = :auteur WHERE id = :id");
+        $stmt->bindValue(':titre', $ouvrage->getTitle());
+        $stmt->bindValue(':auteur', $ouvrage->getAuthor());
+        $stmt->bindValue(':id', $ouvrage->getId());
+        $stmt->execute();
+        $stmt = null;
+    }
 }

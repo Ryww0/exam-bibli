@@ -77,6 +77,10 @@ try {
         echo (new \App\Controller\OuvrageController())->addOuvrage();
     });
 
+    $router->post('/ouvrage/update/:id', function ($id) {
+        echo (new \App\Controller\OuvrageController())->updateOuvrageById($id);
+    });
+
 
     // LOCATION
     $router->get('/locations', function () {
@@ -85,6 +89,14 @@ try {
 
     $router->get('/location/del/:id', function ($id) {
         echo (new \App\Controller\LocationController())->deleteLocationById($id);
+    });
+
+    $router->post('/location/add', function () {
+        echo (new \App\Controller\LocationController())->addLocation();
+    });
+
+    $router->get('/locations/create', function () {
+        echo (new \App\Controller\LocationController())->addLocation();
     });
 
     $router->run();

@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Model\Ouvrage;
 use App\Service\Form;
 
 class FormOuvrage

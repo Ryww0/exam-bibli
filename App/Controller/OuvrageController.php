@@ -75,4 +75,25 @@ class OuvrageController
                 ]);
         }
     }
+
+    public function updateOuvrageById($id)
+    {
+        if (Input::exists()) {
+            $val = new Validation;
+            // pattern text doesn't work so I disabled pattern validation for ouvrage
+            // TODO
+    //            $val->name('titre')->value(Input::get('titre'))->pattern('text')->required();
+    //            $val->name('auteur')->value(Input::get('auteur'))->pattern('text')->required();
+            if ($val->isSuccess()) {
+                $titre = Input::get('titre');
+                $auteur = Input::get('auteur');
+                $ouvrage = new Ouvrage($titre, $auteur);
+                $ouvrage->setId($id);
+                $this->ouvrageRepository->update($ouvrage);
+                Redirect::to('ouvrages');
+            } else {
+                Redirect::to('ouvrages');
+            }
+        }
+    }
 }

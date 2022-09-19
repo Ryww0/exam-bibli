@@ -2,10 +2,9 @@
 
 namespace App\Form;
 
-use App\Model\Abonne;
 use App\Service\Form;
 
-class FormAbonne
+class  FormAbonne
 {
     public static function buildAddAbonne()
     {

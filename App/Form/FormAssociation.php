@@ -11,9 +11,6 @@ class FormAssociation
     {
         $form = new Form();
 
-        var_dump($arr);
-        var_dump($arr2);
-
         $form->debutForm('post', URL_ROOT . 'location/add/')
 
             ->ajoutSelect('abonne', $arr)
